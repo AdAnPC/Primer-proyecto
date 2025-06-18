@@ -1,0 +1,25 @@
+<div class="dashboard-container">
+  <div class="cards-row">
+    <div class="card blue">
+      <h4>Usuarios</h4>
+      <p><%= totalUsuarios %></p>
+    </div>
+    <div class="card cyan">
+      <h4>Ingresos</h4>
+      <p>$<%= ingresosTotales.toFixed(2) %></p>
+    </div>
+    <div class="card yellow">
+      <h4>Tasa conversión</h4>
+      <p><%= tasaConversion %>%</p>
+    </div>
+    <div class="card red">
+      <h4>Sesiones</h4>
+      <p><%= totalSesiones %></p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <h4>Tráfico</h4>
+    <canvas id="trafficChart" width="400" height="200"></canvas>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+
+
+  <form action="/movimientoInventario/crear" method="POST">
+    <div class="mb-3">
+      <label for="FechaMovimiento" class="form-label">Fecha</label>
+      <input type="date" class="form-control" name="FechaMovimiento" id="FechaMovimiento" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="ProductoID" class="form-label">Producto</label>
+      <select name="ProductoID" class="form-select" required>
+        <option value="">Seleccionar...</option>
+        <% productos.forEach(p => { %>
+          <option value="<%= p.ProductoID %>"><%= p.Nombre %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="CantidadMovida" class="form-label">Cantidad Movida</label>
+      <input type="number" class="form-control" name="CantidadMovida" id="CantidadMovida" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="TipoMovimiento" class="form-label">Tipo de Movimiento</label>
+      <select name="TipoMovimiento" class="form-select" required>
+        <option value="">Seleccionar...</option>
+        <option value="Entrada">Entrada</option>
+        <option value="Salida">Salida</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="BodegaID" class="form-label">Bodega</label>
+      <select name="BodegaID" class="form-select" required>
+        <option value="">Seleccionar...</option>
+        <% bodegas.forEach(b => { %>
+          <option value="<%= b.BodegaID %>"><%= b.Nombre %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar Movimiento</button>
+  </form>
+</div>
+

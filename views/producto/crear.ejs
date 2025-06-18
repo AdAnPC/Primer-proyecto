@@ -1,0 +1,71 @@
+
+<h2>Crear Producto</h2>
+
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+<form action="/producto/crear" method="POST" class="form-container">
+    <% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+  <div class="form-group">
+    <label for="Nombre">Nombre</label>
+    <input type="text" name="Nombre" id="Nombre" required>
+  </div>
+
+  <div class="form-group">
+    <label for="Descripcion">Descripción</label>
+    <textarea name="Descripcion" id="Descripcion"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="PrecioCompra">Precio de Compra</label>
+    <input type="number" step="0.01" name="PrecioCompra" id="PrecioCompra" required>
+  </div>
+
+  <div class="form-group">
+    <label for="PrecioVenta">Precio de Venta</label>
+    <input type="number" step="0.01" name="PrecioVenta" id="PrecioVenta" required>
+  </div>
+
+  <div class="form-group">
+    <label for="UnidadMedida">Unidad de Medida</label>
+    <input type="text" name="UnidadMedida" id="UnidadMedida" required>
+  </div>
+
+ <div class="form-group">
+  <label for="CategoriaID">Categoría</label>
+  <select id="CategoriaID" name="CategoriaID" class="form-control rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+    <option value="">-- Seleccione Categoría --</option>
+    <% categorias.forEach(categoria => { %>
+      <option value="<%= categoria.CategoriaID %>" <%= (CategoriaID && CategoriaID == categoria.CategoriaID) ? 'selected' : '' %>>
+        <%= categoria.Nombre %>
+      </option>
+    <% }) %>
+  </select>
+</div>
+
+
+
+
+  <div class="form-group">
+    <label for="StockMinimo">Stock Mínimo</label>
+    <input type="number" name="StockMinimo" id="StockMinimo" required>
+  </div>
+
+  <div class="form-group">
+    <label for="Activo">Activo</label>
+    <input type="checkbox" name="Activo" id="Activo" checked>
+  </div>
+
+  <button type="submit">Guardar</button>
+</form>
+

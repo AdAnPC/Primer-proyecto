@@ -1,0 +1,20 @@
+<h1>categori - gasto</h1>
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+<form action="/categoriaGasto/crear" method="POST">
+  <div>
+    <label>Nombre</label>
+    <input type="text" name="Nombre" required>
+  </div>
+  <div>
+    <label>Descripción</label>
+    <textarea name="Descripcion"></textarea>
+  </div>
+  <button type="submit">Guardar</button>
+</form>

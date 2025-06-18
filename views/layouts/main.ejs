@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Palmas</title>
+
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<link rel="stylesheet" href="/stylesheets/producto.css" />
+
+</head>
+<body>
+  <div class="app">
+    
+    <!-- Sidebar -->
+    <%- include('../partials/sidebar') %>
+
+    <!-- Main content -->
+    <div class="main">
+      <!-- Topbar -->
+      <%- include('../partials/topbar') %>
+
+      <!-- Vista dinámica -->
+      <main class="dashboard">
+        <%- body %>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/javascripts/trafi.js"></script>
+
+</body>
+</html>

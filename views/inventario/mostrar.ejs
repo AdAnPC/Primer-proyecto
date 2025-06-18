@@ -1,0 +1,27 @@
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Fecha Ingreso</th>
+      <th>Fecha Salida</th>
+      <th>Bodega</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% inventario.forEach(item => { %>
+      <tr>
+        <td><%= item.InventarioID %></td>
+        <td><%= item.Producto?.Nombre || 'N/A' %></td>
+        <td><%= item.Cantidad %></td>
+        <td><%= new Date(item.FechaIngreso).toISOString().split('T')[0] || '' %></td>
+<td><%= new Date(item.FechaSalida).toISOString().split('T')[0] || '' %></td>
+
+        <td><%= item.Bodega?.Nombre || 'N/A' %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

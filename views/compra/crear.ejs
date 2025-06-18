@@ -1,0 +1,50 @@
+
+<h1>compras</h1>
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+  <form action="/compra/crear" method="POST">
+    <div class="mb-3">
+      <label for="FechaCompra" class="form-label">Fecha de Compra</label>
+      <input type="date" class="form-control" id="FechaCompra" name="FechaCompra" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="ProveedorID" class="form-label">Proveedor</label>
+      <select class="form-select" id="ProveedorID" name="ProveedorID" required>
+        <option value="">Seleccionar...</option>
+        <% proveedores.forEach(p => { %>
+          <option value="<%= p.ProveedorID %>"><%= p.Nombre %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="ProductoID" class="form-label">Producto</label>
+      <select class="form-select" id="ProductoID" name="ProductoID" required>
+        <option value="">Seleccionar...</option>
+        <% productos.forEach(p => { %>
+          <option value="<%= p.ProductoID %>"><%= p.Nombre %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="CantidadComprada" class="form-label">Cantidad</label>
+      <input type="number" class="form-control" id="CantidadComprada" name="CantidadComprada" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="PrecioCompra" class="form-label">Precio Unitario</label>
+      <input type="number" step="0.01" class="form-control" id="PrecioCompra" name="PrecioCompra" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar Compra</button>
+  </form>
+</div>
+

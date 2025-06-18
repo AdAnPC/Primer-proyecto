@@ -1,0 +1,71 @@
+
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+<form action="/producto/crear" method="POST" class="form-container">
+    <% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+<h2>Registrar Venta</h2>
+<form action="/venta/crear" method="POST" class="form-container">
+  <div>
+    <label for="FechaVenta">Fecha</label>
+    <input type="date" name="FechaVenta" id="FechaVenta" required>
+  </div>
+
+  <div>
+    <label for="ClienteID">Cliente</label>
+    <select name="ClienteID" id="ClienteID" required>
+      <option value="">-- Seleccione Cliente --</option>
+      <% clientes.forEach(cliente => { %>
+        <option value="<%= cliente.ClienteID %>">
+          <%= cliente.Nombre %> (ID: <%= cliente.ClienteID %>)
+        </option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div>
+    <label for="ProductoID">Producto</label>
+    <select name="ProductoID" id="ProductoID" required>
+      <option value="">-- Seleccione Producto --</option>
+      <% productos.forEach(producto => { %>
+        <option value="<%= producto.ProductoID %>">
+          <%= producto.Nombre %> (ID: <%= producto.ProductoID %>)
+        </option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div>
+    <label for="CantidadVendida">Cantidad</label>
+    <input type="number" name="CantidadVendida" id="CantidadVendida" required>
+  </div>
+
+  <div>
+    <label for="PrecioVenta">Precio de Venta</label>
+    <input type="number" step="0.01" name="PrecioVenta" id="PrecioVenta" required>
+  </div>
+
+  <div>
+    <label for="UsuarioID">Usuario</label>
+    <select name="UsuarioID" id="UsuarioID" required>
+      <option value="">-- Seleccione Usuario --</option>
+      <% usuarios.forEach(usuario => { %>
+        <option value="<%= usuario.UsuarioID %>">
+          <%= usuario.Nombre %> (ID: <%= usuario.UsuarioID %>)
+        </option>
+      <% }) %>
+    </select>
+  </div>
+
+  <button type="submit">Guardar Venta</button>
+</form>

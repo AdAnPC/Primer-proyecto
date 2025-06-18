@@ -1,0 +1,32 @@
+
+<div class="container mt-4">
+  <h1 class="mb-4">Registrar Bodega</h1>
+
+  <% if (typeof success !== 'undefined') { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <% if (typeof error !== 'undefined') { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <form action="/bodega/crear" method="POST">
+    <div class="mb-3">
+      <label for="Nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="Direccion" class="form-label">Dirección</label>
+      <input type="text" class="form-control" id="Direccion" name="Direccion">
+    </div>
+
+    <div class="mb-3">
+      <label for="Cantidad" class="form-label">Cantidad</label>
+      <input type="number" class="form-control" id="Cantidad" name="Cantidad" min="0">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+  </form>
+</div>
+
