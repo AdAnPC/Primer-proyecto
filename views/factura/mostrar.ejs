@@ -1,0 +1,99 @@
+<h2>Listado de Facturas</h2>
+
+<%
+  let totalPagadas = 0;
+  let totalPendientes = 0;
+  let TotalFactura = 0;
+
+  facturas.forEach(f => {
+    const total = parseFloat(f.TotalFactura || 0);
+    TotalFactura += total;
+
+    if (f.Estado) {
+      totalPagadas += total;
+    } else {
+      totalPendientes += total;
+    }
+  });
+%>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Cliente</th>
+      <th>Total</th>
+      <th>Método de Pago</th>
+      <th>Estado</th>
+      <th>Productos</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% facturas.forEach(f => { %>
+      <tr>
+        <td><%= f.FacturaID %></td>
+        <td><%= f.FechaFactura %></td>
+        <td><%= f.Cliente?.Nombre || 'Sin Cliente' %></td>
+        <td>$<%= parseFloat(f.TotalFactura).toFixed(2) %></td>
+        <td><%= f.MetodoPago %></td>
+        <td><%= f.Estado ? 'Pagada' : 'Pendiente' %></td>
+        <td>
+          <ul>
+            <% f.DetalleFacturas?.forEach(det => { %>
+              <li>
+                <%= det.Producto?.Nombre %> -
+                <%= det.CantidadVendida %> x $<%= parseFloat(det.PrecioVenta).toFixed(2) %>
+              </li>
+            <% }) %>
+          </ul>
+        </td>
+        <td>
+          <form action="/factura/cambiar-estado/<%= f.FacturaID %>" method="POST">
+            <button type="submit" style="
+              padding: 5px 10px;
+              background-color: <%= f.Estado ? '#e74c3c' : '#2ecc71' %>;
+              color: white;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            ">
+              <%= f.Estado ? 'Pagada' : 'Pendiente' %>
+            </button>
+          </form>
+
+                    <!-- Inhabilitar -->
+          <form action="/factura/inhabilitar/<%= f.FacturaID %>" method="POST">
+            <button type="submit" style="
+              padding: 5px 10px;
+              background-color: #c0392b;
+              color: white;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              width: 100%;
+            " onclick="return confirm('¿Estás seguro que deseas eliminar (inhabilitar) esta factura?')">
+              Inhabilitar
+            </button>
+          </form>
+
+        </td>
+      </tr>
+    <% }) %>
+
+    <!-- Fila de totales -->
+    <tr style="background-color: #dff0d8; font-weight: bold;">
+      <td colspan="3">✅ Total Pagadas</td>
+      <td colspan="5" style="color: #2c3e50;">$<%= totalPagadas.toFixed(2) %></td>
+    </tr>
+    <tr style="background-color: #f2dede; font-weight: bold;">
+      <td colspan="3">❌ Total Pendientes</td>
+      <td colspan="5" style="color: #2c3e50;">$<%= totalPendientes.toFixed(2) %></td>
+    </tr>
+    <tr style="background-color: #f0f0f0; font-weight: bold;">
+      <td colspan="3">📊 Total General</td>
+      <td colspan="5" style="color: #2c3e50;">$<%= TotalFactura.toFixed(2) %></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,3 +1,5 @@
+<main class="panel-factura">
+
 <h1><%= title %></h1>
 
 <% if (typeof success !== 'undefined') { %>
@@ -6,48 +8,65 @@
 <% if (typeof error !== 'undefined') { %>
   <div class="alert alert-danger"><%= error %></div>
 <% } %>
-<form action="/factura/crear" method="POST" onsubmit="return prepararDetalles()">
+<form action="/factura/crear" method="POST" class="form-conteiner" onsubmit="return prepararDetalles()">
   <!-- Datos de la factura -->
+   <div class="form-group">
   <label>Fecha:</label>
   <input type="date" name="FechaFactura" required>
+</div>
 
+<div class="form-group">
   <label>Cliente:</label>
 <select name="ClienteID" class="clienteID" required>
   <% clientes.forEach(cliente => { %> 
     <option value="<%= cliente.ClienteID %>"><%= cliente.Nombre %></option>
   <% }); %>
 </select>
+</div>
 
 
-
+<div class="form-group">
   <label>Total Factura:</label>
   <input type="number" step="0.01" name="TotalFactura" required>
-
+</div>
+<div class="form-group">
   <label>Método de pago:</label>
   <input type="text" name="MetodoPago" required>
+</div>
 
+<div class="form-group">
   <label>Estado (Pagada):</label>
   <input type="checkbox" name="Estado">
+</div>
 
   <hr>
+
   <h4>Productos</h4>
+        <div class="form-group">
+
   <div id="productos">
+
     <div class="producto">
       <select class="producto-id" required>
         <% productos.forEach(producto => { %>
           <option value="<%= producto.ProductoID %>"><%= producto.Nombre %></option>
         <% }); %>
       </select>
+     
       <input type="number" placeholder="Cantidad" class="cantidad" required>
       <input type="number" step="0.01" placeholder="Precio" class="precio" required>
+      </div>
     </div>
   </div>
+  
   <button type="button" onclick="agregarProducto()">Agregar producto</button>
 
   <input type="hidden" name="productos" id="productosInput">
   <button type="submit">Registrar</button>
 </form>
 
+
+</main>
 <script>
 function agregarProducto() {
   const cont = document.getElementById('productos');

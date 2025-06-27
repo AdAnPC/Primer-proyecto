@@ -1,0 +1,28 @@
+<h2>Listado de Compras</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Proveedor</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% compras.forEach(c => { %>
+      <tr>
+        <td><%= c.CompraID %></td>
+        <td><%= c.FechaCompra %></td>
+        <td><%= c.Proveedore?.Nombre %></td>
+        <td><%= c.Producto?.Nombre %></td>
+        <td><%= c.CantidadComprada %></td>
+        <td>$<%= parseFloat(c.PrecioCompra).toFixed(2) %></td>
+        <td>$<%= parseFloat(c.TotalCompra).toFixed(2) %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

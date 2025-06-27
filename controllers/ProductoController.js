@@ -1,10 +1,12 @@
-const Producto = require('../models/Producto');
-const Categoria = require('../models/Categoria'); // Usamos la tabla categoria
+
+const { Usuario, Venta, Bodega,Compra,MovimientoInventario, Producto, DetalleFactura, Factura, Inventario, Cliente , Gasto,CategoriaGasto,Proveedor } = require('../models');
 
 // Mostrar formulario
+console.log('CategoriaGasto:', CategoriaGasto);
+
 exports.mostrarFormulario = async (req, res) => {
   try {
-    const categorias = await Categoria.findAll(); // Obtenemos categorías
+    const categorias = await CategoriaGasto.findAll(); // Obtenemos categorías
     res.render('producto/crear', {
       title: 'Crear Producto',
       categorias,
@@ -27,7 +29,7 @@ exports.mostrarFormulario = async (req, res) => {
 exports.crearProducto = async (req, res) => {
   const {
     Nombre, Descripcion, PrecioCompra, PrecioVenta,
-    UnidadMedida, CategoriaID, StockMinimo, Activo
+    UnidadMedida, CategoriaGastoID, StockMinimo, Activo
   } = req.body;
 
   try {
@@ -48,7 +50,7 @@ exports.crearProducto = async (req, res) => {
     }
 
     // Verifica si la categoría es válida
-    const categoria = await Categoria.findByPk(CategoriaID);
+    const categoria = await Categoria.findByPk(CategoriaGastoID);
     if (!categoria) {
       return res.render('producto/crear', {
         title: 'Crear Producto',
@@ -65,7 +67,7 @@ exports.crearProducto = async (req, res) => {
       PrecioCompra,
       PrecioVenta,
       UnidadMedida,
-      CategoriaID: parseInt(CategoriaID),
+      CategoriaGastoID: parseInt(CategoriaGastoID),
       StockMinimo,
       Activo: Activo === 'on'
     });
@@ -88,3 +90,22 @@ exports.crearProducto = async (req, res) => {
   }
 };
 
+
+
+
+exports.mostrarProductos = async (req, res) => {
+  try {
+    const productos = await Producto.findAll({
+      include: {
+        model: CategoriaGasto,
+        as: 'categoria',
+        attributes: ['Nombre']
+      }
+    });
+
+    res.render('producto/mostrar', { productos });
+  } catch (error) {
+    console.error('Error al mostrar productos:', error);
+    res.status(500).send('Error al mostrar productos');
+  }
+};

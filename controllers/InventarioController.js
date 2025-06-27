@@ -1,13 +1,15 @@
-const Inventario = require('../models/Inventario');
-const Bodega = require('../models/Bodeja');
-const Producto = require('../models/Producto');
+
+const { Usuario, Venta, Bodega, Producto, Inventario, Cliente, Factura , CategoriaGasto } = require('../models');
 
 // Mostrar formulario para agregar inventario
 // Mostrar solo los datos del inventario
 exports.mostrarFormulario = async (req, res) => {
   try {
     const inventario = await Inventario.findAll({
-      include: [Producto, Bodega]
+       include: [
+    { model: Producto, as: 'producto' },
+    { model: Bodega, as: 'bodega' }
+  ]
     });
 
     res.render('inventario/mostrar', {

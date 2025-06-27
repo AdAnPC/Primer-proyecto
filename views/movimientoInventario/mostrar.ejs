@@ -1,0 +1,26 @@
+<h2>Movimientos de Inventario</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Tipo</th>
+      <th>Bodega</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% movimientos.forEach(m => { %>
+      <tr>
+        <td><%= m.MovimientoID %></td>
+        <td><%= m.FechaMovimiento %></td>
+        <td><%= m.Producto?.Nombre %></td>
+        <td><%= m.CantidadMovida %></td>
+        <td><%= m.TipoMovimiento %></td>
+        <td><%= m.Bodega?.Nombre %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

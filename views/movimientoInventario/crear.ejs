@@ -1,12 +1,14 @@
+<main class="panel-producto">
 
 
-  <form action="/movimientoInventario/crear" method="POST">
-    <div class="mb-3">
+  <form action="/movimientoInventario/crear" method="POST" class="form-container">
+    <h2>  MOVER INVENTARIO </h2>
+    <div class="form-group">
       <label for="FechaMovimiento" class="form-label">Fecha</label>
       <input type="date" class="form-control" name="FechaMovimiento" id="FechaMovimiento" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="ProductoID" class="form-label">Producto</label>
       <select name="ProductoID" class="form-select" required>
         <option value="">Seleccionar...</option>
@@ -16,12 +18,12 @@
       </select>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="CantidadMovida" class="form-label">Cantidad Movida</label>
       <input type="number" class="form-control" name="CantidadMovida" id="CantidadMovida" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="TipoMovimiento" class="form-label">Tipo de Movimiento</label>
       <select name="TipoMovimiento" class="form-select" required>
         <option value="">Seleccionar...</option>
@@ -30,7 +32,7 @@
       </select>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="BodegaID" class="form-label">Bodega</label>
       <select name="BodegaID" class="form-select" required>
         <option value="">Seleccionar...</option>
@@ -44,3 +46,5 @@
   </form>
 </div>
 
+
+</main>

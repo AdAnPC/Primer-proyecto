@@ -1,0 +1,39 @@
+<h1>🧴 Lista de Productos</h1>
+
+<table class="table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio Compra</th>
+      <th>Precio Venta</th>
+      <th>Unidad</th>
+      <th>Stock Mínimo</th>
+      <th>Categoría</th>
+      <th>Activo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% productos.forEach((p, index) => { %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= p.Nombre %></td>
+        <td><%= p.Descripcion %></td>
+       <td>$<%= Number(p.PrecioCompra).toFixed(2) %></td>
+<td>$<%= Number(p.PrecioVenta).toFixed(2) %></td>
+
+        <td><%= p.UnidadMedida %></td>
+        <td><%= p.StockMinimo %></td>
+        <td><%= p.categoria?.Nombre || 'N/A' %></td>
+        <td>
+          <% if (p.Activo) { %>
+            <span class="badge bg-success">Sí</span>
+          <% } else { %>
+            <span class="badge bg-danger">No</span>
+          <% } %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

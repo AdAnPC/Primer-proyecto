@@ -7,5 +7,6 @@ router.get('/crear', (req, res) => {
 });
 
 router.post('/crear', ProveedorController.crearProveedor);
+router.get('/mostrar', ProveedorController.mostrarProveedores);
 
 module.exports = router;

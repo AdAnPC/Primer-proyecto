@@ -1,8 +1,6 @@
-const MovimientoInventario = require('../models/MovimientoInventario');
 
-const Bodega = require('../models/Bodeja');
-const Producto = require('../models/Producto');
-const Inventario = require('../models/Inventario');
+
+const { Usuario, Venta, Bodega,Compra,MovimientoInventario, Producto, DetalleFactura, Factura, Inventario, Cliente , CategoriaGasto,Proveedor } = require('../models');
 
 exports.mostrarFormulario = async (req, res) => {
   try {
@@ -101,5 +99,29 @@ exports.crearMovimiento = async (req, res) => {
       productos,
       bodegas
     });
+  }
+};
+
+
+
+
+
+
+
+
+exports.mostrarMovimientos = async (req, res) => {
+  try {
+    const movimientos = await MovimientoInventario.findAll({
+      include: [
+        { model: Producto, as: 'producto', attributes: ['Nombre'] },
+        { model: Bodega, as: 'bodega', attributes: ['Nombre'] }
+      ]
+    });
+
+    res.render('movimientoInventario/mostrar', { movimientos });
+
+  } catch (error) {
+    console.error('Error al mostrar movimientos:', error);
+    res.status(500).send('Error al mostrar movimientos');
   }
 };

@@ -1,7 +1,5 @@
-const db = require('../models');
-const Gasto = require('../models/Gasto');
-const CategoriaGasto = require('../models/CategoriaGasto'); // importa directo el modelo
 
+const { Usuario, Venta, Bodega,Compra,MovimientoInventario, Producto, DetalleFactura, Factura, Inventario, Cliente , Gasto,CategoriaGasto,Proveedor } = require('../models');
 
 exports.mostrarFormulario = async (req, res) => {
   try {
@@ -45,5 +43,26 @@ exports.crearGasto = async (req, res) => {
       error: 'Hubo un problema al registrar el gasto',
       categorias
     });
+  }
+};
+
+
+
+
+
+// mostar los gasto 
+exports.mostrarGastos = async (req, res) => {
+  try {
+    const gastos = await Gasto.findAll({
+      include: {
+        model: CategoriaGasto,
+        as: 'categoria' // ← ¡usa el mismo alias definido en el modelo!
+      }
+    });
+
+    res.render('gasto/mostrar', { gastos });
+  } catch (error) {
+    console.error('Error al mostrar gastos:', error);
+    res.status(500).send('Error al mostrar gastos');
   }
 };

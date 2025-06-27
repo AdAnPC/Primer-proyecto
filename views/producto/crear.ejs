@@ -1,5 +1,6 @@
+<main class="panel-producto">
 
-<h2>Crear Producto</h2>
+
 
 <% if (typeof success !== 'undefined' && success) { %>
   <div class="alert alert-success"><%= success %></div>
@@ -16,6 +17,7 @@
 <% if (typeof error !== 'undefined' && error) { %>
   <div class="alert alert-danger"><%= error %></div>
 <% } %>
+<h2>Crear Producto</h2>
   <div class="form-group">
     <label for="Nombre">Nombre</label>
     <input type="text" name="Nombre" id="Nombre" required>
@@ -42,16 +44,15 @@
   </div>
 
  <div class="form-group">
-  <label for="CategoriaID">Categoría</label>
-  <select id="CategoriaID" name="CategoriaID" class="form-control rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-    <option value="">-- Seleccione Categoría --</option>
-    <% categorias.forEach(categoria => { %>
-      <option value="<%= categoria.CategoriaID %>" <%= (CategoriaID && CategoriaID == categoria.CategoriaID) ? 'selected' : '' %>>
-        <%= categoria.Nombre %>
-      </option>
-    <% }) %>
+  <label for="CategoriaGastoID" class="form-label">Categoría</label>
+  <select class="form-select" id="CategoriaGastoID" name="CategoriaGastoID" required>
+    <option value="">Seleccionar...</option>
+    <% categorias.forEach(c => { %>
+      <option value="<%= c.CategoriaGastoID %>"><%= c.Nombre %></option>
+    <% }); %>
   </select>
 </div>
+
 
 
 
@@ -69,3 +70,4 @@
   <button type="submit">Guardar</button>
 </form>
 
+</main>

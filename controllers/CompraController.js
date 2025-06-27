@@ -1,7 +1,4 @@
-const Proveedor = require('../models/Proveedor'); // importa directo el modelo
-const Producto = require('../models/Producto');
-const Compra = require('../models/Compra');
-const Inventario = require('../models/Inventario');
+const { Usuario, Venta, Bodega,Compra, Producto, Inventario, Cliente, Factura , CategoriaGasto,Proveedor } = require('../models');
 
 
 exports.mostrarFormulario = async (req, res) => {
@@ -84,5 +81,29 @@ exports.crearCompra = async (req, res) => {
       proveedores,
       productos
     });
+  }
+};
+
+
+
+
+
+
+
+// Definir relaciones
+exports.mostrarCompras = async (req, res) => {
+  try {
+    const compras = await Compra.findAll({
+      include: [
+        { model: Producto, as: 'producto', attributes: ['Nombre'] },
+        { model: Proveedor, as: 'proveedor', attributes: ['Nombre'] }
+      ]
+    });
+
+    res.render('compra/mostrar', { compras });
+
+  } catch (error) {
+    console.error('Error al mostrar compras:', error);
+    res.status(500).send('Error al mostrar compras');
   }
 };

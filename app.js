@@ -6,7 +6,7 @@ const logger = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const sequelize = require('./models/index');
+const { sequelize } = require('./models'); // ✅ Importa la instancia correctamente
 
 sequelize.authenticate()
   .then(() => console.log('Conexión a MySQL establecida correctamente.'))
@@ -34,6 +34,7 @@ const facturaRoutes = require('./routes/factura');
 
 
 
+const iformeRoutes = require('./routes/mostrarIforme');
 
 const app = express();
 
@@ -76,7 +77,7 @@ app.use('/gasto', gastoRoutes);
 app.use('/compra', compraRoutes);
 app.use('/movimientoInventario', movimientoInventarioRoutes);
 app.use('/factura', facturaRoutes);
-
+app.use('/mostrarIformes', iformeRoutes)
 
 
 

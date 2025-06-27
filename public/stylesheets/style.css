@@ -18,6 +18,8 @@ body {
   min-height: 100vh;
 }
 
+/* desde aqui empieza la barra lateral */
+
 /* Sidebar */
 .sidebar {
   width: 240px;
@@ -57,13 +59,14 @@ body {
   background-color: #495057;
   color: #fff;
 }
+/* finaliza aqui la barra latelar  */
+
+
+
+
+
 
 /* Contenido principal */
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
 /* Topbar */
 .topbar {
@@ -94,21 +97,6 @@ body {
   flex: 1;
 }
 
-.dashboard-header h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.dashboard-header p {
-  font-size: 1rem;
-  color: #666;
-}
-
-
-
-
-
-
 
 
 
@@ -118,10 +106,21 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
-.dashboard-container {
+/* el panel es el contenedor donde se alojan los formularios */
+.panel-container {
+  max-width: 1200px; /* ancho máximo deseado */
+   margin-top: -1rem; /* centra horizontalmente */
   padding: 2rem;
-  margin-left: 250px; /* espacio para el sidebar */
+  width: 100%; /* se adapta al ancho de la pantalla */
+  box-sizing: border-box; /* incluye el padding dentro del ancho */
 }
+
+@media (min-width: 992px) {
+  .panel-container {
+    margin-left: 10px; /* ancho del sidebar */
+  }
+}
+
 
 .cards-row {
   display: flex;
@@ -152,9 +151,10 @@ body {
 .card.cyan { background-color: #1cc88a; }
 .card.yellow { background-color: #f6c23e; }
 .card.red { background-color: #e74a3b; }
+.card.green{ background-color: #23272b;}
 
 .graph-section {
-  background-color: white;
+  background-color: rgb(241, 234, 234);
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -214,10 +214,4 @@ h2 {
   border-bottom: 1px solid #dee2e6;
   padding-bottom: 0.5rem;
 }
-
-
-.dashboard {
-  padding: 2rem;
-  flex-grow: 1;
-  width: 100%;
-}
+ 

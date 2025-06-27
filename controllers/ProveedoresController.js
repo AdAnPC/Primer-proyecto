@@ -1,4 +1,4 @@
-const Proveedor = require('../models/Proveedor'); // importa directo el modelo
+const { Usuario, Venta, Bodega,Compra,MovimientoInventario, Producto, DetalleFactura, Factura, Inventario, Cliente , Gasto,CategoriaGasto,Proveedor } = require('../models');
 
 exports.mostrarFormulario = (req, res) => {
   res.render('proveedor/crear', {
@@ -30,4 +30,20 @@ exports.crearProveedor = async (req, res) => {
   });
 }
 
+};
+
+
+
+
+
+
+
+exports.mostrarProveedores = async (req, res) => {
+  try {
+    const proveedores = await Proveedor.findAll();
+    res.render('proveedor/mostrar', { proveedores });
+  } catch (error) {
+    console.error('Error al mostrar proveedores:', error);
+    res.status(500).send('Error al mostrar proveedores');
+  }
 };

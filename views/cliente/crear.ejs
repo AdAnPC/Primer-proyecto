@@ -1,6 +1,7 @@
+<main class="panel-producto">
 
-<div class="container mt-4">
-  <h1 class="mb-4">Registrar Cliente</h1>
+
+  
 
   <% if (typeof success !== 'undefined') { %>
     <div class="alert alert-success"><%= success %></div>
@@ -10,23 +11,24 @@
     <div class="alert alert-danger"><%= error %></div>
   <% } %>
 
-  <form action="/cliente/crear" method="POST">
-    <div class="mb-3">
+  <form action="/cliente/crear" method="POST" class="form-container">
+    <h1>Registrar Cliente</h1>
+    <div class="form-group">
       <label for="Nombre" class="form-label">Nombre</label>
       <input type="text" class="form-control" id="Nombre" name="Nombre" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Direccion" class="form-label">Dirección</label>
       <input type="text" class="form-control" id="Direccion" name="Direccion">
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Telefono" class="form-label">Teléfono</label>
       <input type="text" class="form-control" id="Telefono" name="Telefono">
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Email" class="form-label">Correo electrónico</label>
       <input type="email" class="form-control" id="Email" name="Email">
     </div>
@@ -35,3 +37,4 @@
   </form>
 </div>
 
+</main>

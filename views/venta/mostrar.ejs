@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <h2 class="mb-4">🛒 Ventas Realizadas</h2>
+  <table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Total</th>
+        <th>Vendedor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% ventas.forEach((v, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+<td><%= new Date(v.FechaVenta).toLocaleDateString() %></td>
+          <td><%= v.cliente?.Nombre || 'N/A' %></td>
+          <td><%= v.producto?.Nombre || 'N/A' %></td>
+          <td><%= v.CantidadVendida %></td>
+          <td>$<%= Number(v.PrecioVenta).toFixed(2) %></td>
+          <td>$<%= Number(v.TotalVenta).toFixed(2) %></td>
+          <td><%= v.usuario?.NombreUsuario || 'N/A' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

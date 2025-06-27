@@ -1,6 +1,7 @@
 
-<div class="container mt-4">
-  <h1 class="mb-4">Registrar Bodega</h1>
+<main class="panel-producto">
+
+  
 
   <% if (typeof success !== 'undefined') { %>
     <div class="alert alert-success"><%= success %></div>
@@ -10,18 +11,19 @@
     <div class="alert alert-danger"><%= error %></div>
   <% } %>
 
-  <form action="/bodega/crear" method="POST">
-    <div class="mb-3">
+  <form action="/bodega/crear" method="POST" class="form-container">
+    <h1 >Registrar Bodega</h1>
+    <div class="form-group">
       <label for="Nombre" class="form-label">Nombre</label>
       <input type="text" class="form-control" id="Nombre" name="Nombre" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Direccion" class="form-label">Dirección</label>
       <input type="text" class="form-control" id="Direccion" name="Direccion">
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Cantidad" class="form-label">Cantidad</label>
       <input type="number" class="form-control" id="Cantidad" name="Cantidad" min="0">
     </div>
@@ -30,3 +32,4 @@
   </form>
 </div>
 
+</main>

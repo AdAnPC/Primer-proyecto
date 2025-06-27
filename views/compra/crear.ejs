@@ -1,5 +1,5 @@
+<main class="panel-producto">
 
-<h1>compras</h1>
 <% if (typeof success !== 'undefined' && success) { %>
   <div class="alert alert-success"><%= success %></div>
 <% } %>
@@ -8,13 +8,15 @@
   <div class="alert alert-danger"><%= error %></div>
 <% } %>
 
-  <form action="/compra/crear" method="POST">
-    <div class="mb-3">
+  <form action="/compra/crear" method="POST" class="form-container">
+    <h1>compras</h1>
+
+    <div class="form-group">
       <label for="FechaCompra" class="form-label">Fecha de Compra</label>
       <input type="date" class="form-control" id="FechaCompra" name="FechaCompra" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="ProveedorID" class="form-label">Proveedor</label>
       <select class="form-select" id="ProveedorID" name="ProveedorID" required>
         <option value="">Seleccionar...</option>
@@ -24,7 +26,7 @@
       </select>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="ProductoID" class="form-label">Producto</label>
       <select class="form-select" id="ProductoID" name="ProductoID" required>
         <option value="">Seleccionar...</option>
@@ -34,13 +36,13 @@
       </select>
     </div>
 
-    <div class="mb-3">
-      <label for="CantidadComprada" class="form-label">Cantidad</label>
+    <div class="form-group">
+      <label for="CantidadComprada" >Cantidad</label>
       <input type="number" class="form-control" id="CantidadComprada" name="CantidadComprada" required>
     </div>
 
-    <div class="mb-3">
-      <label for="PrecioCompra" class="form-label">Precio Unitario</label>
+    <div class="form-group">
+      <label for="PrecioCompra">Precio Unitario</label>
       <input type="number" step="0.01" class="form-control" id="PrecioCompra" name="PrecioCompra" required>
     </div>
 
@@ -48,3 +50,4 @@
   </form>
 </div>
 
+</main>

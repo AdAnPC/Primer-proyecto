@@ -1,4 +1,5 @@
-<h1>categori - gasto</h1>
+<main class="panel-producto">
+
 <% if (typeof success !== 'undefined' && success) { %>
   <div class="alert alert-success"><%= success %></div>
 <% } %>
@@ -7,14 +8,17 @@
   <div class="alert alert-danger"><%= error %></div>
 <% } %>
 
-<form action="/categoriaGasto/crear" method="POST">
-  <div>
+<form action="/categoriaGasto/crear" method="POST"  class="form-container">
+  <h1>categori - gasto</h1>
+  <div class="form-group">
     <label>Nombre</label>
     <input type="text" name="Nombre" required>
   </div>
-  <div>
+  <div class="form-group">
     <label>Descripción</label>
     <textarea name="Descripcion"></textarea>
   </div>
   <button type="submit">Guardar</button>
 </form>
+
+</main>

@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <h2 class="mb-4">🏬 Lista de Bodegas</h2>
+  <table class="table table-bordered table-hover shadow">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bodegas.forEach((bodega, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= bodega.Nombre %></td>
+          <td><%= bodega.Direccion %></td>
+          <td><%= bodega.Cantidad %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

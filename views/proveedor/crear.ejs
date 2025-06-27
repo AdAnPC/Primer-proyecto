@@ -1,4 +1,6 @@
-<h1>Registrar Proveedor</h1>
+<main class="panel-producto">
+
+
 
 <% if (typeof success !== 'undefined' && success) { %>
   <div class="alert alert-success"><%= success %></div>
@@ -8,7 +10,8 @@
   <div class="alert alert-danger"><%= error %></div>
 <% } %>
 
-<form action="/proveedor/crear" method="POST">
+<form action="/proveedor/crear" method="POST" class="form-container">
+  <h1>Registrar Proveedor</h1>
   <div class="form-group">
     <label for="Nombre">Nombre</label>
     <input type="text" id="Nombre" name="Nombre" required>
@@ -31,3 +34,4 @@
 
   <button type="submit">Registrar</button>
 </form>
+</main>

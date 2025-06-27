@@ -1,21 +1,23 @@
+<main class="panel-producto">
 
-  <form action="/gasto/crear" method="POST">
-    <div class="mb-3">
-      <label for="FechaGasto" class="form-label">Fecha del Gasto</label>
+  <form action="/gasto/crear" method="POST"  class="form-container">
+    <h2>  GASTOS </h2>
+    <div class="form-group">
+      <label for="FechaGasto" >Fecha del Gasto</label>
       <input type="date" class="form-control" id="FechaGasto" name="FechaGasto" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Descripcion" class="form-label">Descripción</label>
       <textarea class="form-control" id="Descripcion" name="Descripcion"></textarea>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="Monto" class="form-label">Monto</label>
       <input type="number" step="0.01" class="form-control" id="Monto" name="Monto" required>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <label for="CategoriaGastoID" class="form-label">Categoría</label>
       <select class="form-select" id="CategoriaGastoID" name="CategoriaGastoID" required>
         <option value="">Seleccionar...</option>
@@ -29,3 +31,4 @@
   </form>
 </div>
 
+</main>

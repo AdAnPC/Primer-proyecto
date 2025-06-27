@@ -1,4 +1,4 @@
-const CategoriaGasto = require('../models/CategoriaGasto'); // importa directo el modelo
+const { Usuario, Venta, Bodega,Compra,MovimientoInventario, Producto, DetalleFactura, Factura, Inventario, Cliente , Gasto,CategoriaGasto,Proveedor } = require('../models');
 
 exports.mostrarFormulario = (req, res) => {
   res.render('categoriaGasto/crear', {
@@ -24,5 +24,20 @@ exports.crearCategoriaGasto = async (req, res) => {
       title: 'Registrar Categoría de Gasto',
       error: 'Hubo un problema al registrar la categoría'
     });
+  }
+};
+
+
+
+
+// mostrar gastos
+
+exports.mostrarCategorias = async (req, res) => {
+  try {
+    const categorias = await CategoriaGasto.findAll();
+    res.render('categoriaGasto/mostrar', { categorias });
+  } catch (error) {
+    console.error('Error al mostrar categorías de gasto:', error);
+    res.status(500).send('Error al mostrar categorías');
   }
 };

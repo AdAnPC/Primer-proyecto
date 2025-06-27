@@ -1,4 +1,4 @@
-const Cliente = require('../models/Cliente');
+const { Usuario, Venta, Bodega,Compra,MovimientoInventario, Producto, DetalleFactura, Factura, Inventario, Cliente , Gasto,CategoriaGasto,Proveedor } = require('../models');
 
 exports.mostrarFormulario = (req, res) => {
   res.render('cliente/crear', {
@@ -22,5 +22,21 @@ exports.crearCliente = async (req, res) => {
       title: 'Registrar Cliente',
       error: 'Hubo un problema al registrar el cliente'
     });
+  }
+};
+
+
+
+
+// mostrar los clientes 
+
+
+exports.mostrarClientes = async (req, res) => {
+  try {
+    const clientes = await Cliente.findAll();
+    res.render('cliente/mostrar', { clientes });
+  } catch (error) {
+    console.error('Error al mostrar clientes:', error);
+    res.status(500).send('Error al mostrar clientes');
   }
 };

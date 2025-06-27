@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const ctx = document.getElementById('trafficChart').getContext('2d');
+  const ctx = document.getElementById('ventasChart')?.getContext('2d');
+  if (!ctx) return;
+
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+      labels,
       datasets: [{
-        label: 'Visitas',
-        data: [120, 190, 300, 250, 220, 170, 200],
-        backgroundColor: 'rgba(78, 115, 223, 0.2)',
-        borderColor: 'rgba(78, 115, 223, 1)',
+        label: 'Ventas por mes',
+        data: dataVentas,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 2,
         fill: true,
-        tension: 0.4
+        tension: 0.3
       }]
     },
     options: {

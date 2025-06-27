@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2 class="mb-4">👤 Lista de Clientes</h2>
+  <table class="table table-striped table-hover shadow">
+    <thead class="table-primary">
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% clientes.forEach((cliente, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= cliente.Nombre %></td>
+          <td><%= cliente.Direccion %></td>
+          <td><%= cliente.Telefono %></td>
+          <td><%= cliente.Email %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

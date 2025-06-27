@@ -1,8 +1,5 @@
-const Venta = require('../models/Venta');
-const Cliente = require('../models/Cliente');
-const Producto = require('../models/Producto');
-const Usuario = require('../models/Usuario');
-const Inventario = require('../models/Inventario');
+
+const { Usuario, Venta, Producto, Cliente, Factura , CategoriaGasto } = require('../models');
 
 // Mostrar formulario de venta
 exports.mostrarFormulario = async (req, res) => {
@@ -104,3 +101,25 @@ exports.crearVenta = async (req, res) => {
   }
 };
 
+
+
+
+
+// mostrar las ventas 
+
+exports.mostrarVentas = async (req, res) => {
+  try {
+    const ventas = await Venta.findAll({
+      include: [
+        { model: Cliente, as: 'cliente' },
+        { model: Producto, as: 'producto' },
+        { model: Usuario, as: 'usuario' }
+      ]
+    });
+
+    res.render('venta/mostrar', { ventas });
+  } catch (error) {
+    console.error('Error al mostrar ventas:', error);
+    res.status(500).send('Error al mostrar ventas');
+  }
+};

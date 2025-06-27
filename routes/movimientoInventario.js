@@ -4,5 +4,6 @@ const MovimientoController = require('../controllers/MovimientoInventarioControl
 
 router.get('/crear', MovimientoController.mostrarFormulario);
 router.post('/crear', MovimientoController.crearMovimiento);
+router.get('/mostrar', MovimientoController.mostrarMovimientos);
 
 module.exports = router;
